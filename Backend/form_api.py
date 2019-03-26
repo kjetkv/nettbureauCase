@@ -17,7 +17,7 @@ class FormChecker(Resource):
 
     def post(self):
         if get_attempts(request.remote_addr) > 5:
-            abort(403, message="Too many sumbissions in the last 20 minutes.")
+            abort(403, message="Too many submissions in the last 20 minutes.")
         errors = []  # Placeholder array for error messages.
         error_message = ""
         name = request.form['name'].lower()
@@ -67,7 +67,8 @@ class FormChecker(Resource):
             try:
                 with sqlite3.connect("database.db") as connection:
                     cursor = connection.cursor()
-                    cursor.execute("INSERT INTO users (name,email,phone,areacode,comment) VALUES (?,?,?,?,?)", (request.form['name'], email, phone, areacode, comment))
+                    cursor.execute("INSERT INTO users (name,email,phone,areacode,comment) VALUES (?,?,?,?,?)",
+                                   (request.form['name'], email, phone, areacode, comment))
             except:
                 connection.rollback()
                 error_message = "email or phone number already exists"

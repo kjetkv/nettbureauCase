@@ -61,14 +61,12 @@ def get_attempts(ip):
     cur.execute("SELECT * FROM attempts WHERE ip=?", (ip,))
     result = cur.fetchone()
     if result is None:
-        print("Making new record for",ip)
         now = dt.datetime.now()
         cur.execute(
             "INSERT INTO attempts (ip,numAttempts,lastAttempt) VALUES (?,?,?)", (ip, 1, now))
         conn.commit()
         return 1
     else:
-        print("record exists for",ip)
         limit = dt.datetime.now() - dt.timedelta(minutes=20)
         lastAttempt = dt.datetime.strptime(result['lastAttempt'],'%Y-%m-%d %H:%M:%S.%f')
         if lastAttempt < limit:
