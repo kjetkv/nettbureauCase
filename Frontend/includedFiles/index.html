@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="nb">
+  <head>
+    <meta charset="utf-8" />
+    <title></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="css/normalize.css" />
+    <link rel="stylesheet" href="css/main.css" />
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+
+  <body>
+    <section>
+      <form action="https://heksemel.no/case/submit.php" method="POST">
+        <fieldset>
+          <legend>Informasjon</legend>
+          <label>Navn:</label>
+          <input
+            type="text"
+            name="name"
+            value=""
+            placeholder="Ola Nordmann"
+          /><br />
+          <label>E-post:</label>
+          <input
+            type="email"
+            name="email"
+            value=""
+            placeholder="navn@domene.no"
+          /><br />
+          <label>Telefon:</label>
+          <input
+            type="tel"
+            name="phone"
+            value=""
+            placeholder="XXX XX XXX"
+          /><br />
+          <label>Postnummer:</label>
+          <input
+            type="number"
+            name="areacode"
+            value=""
+            max="9999"
+            placeholder="1234"
+          /><br />
+          <label>Kommentar:</label> <textarea name="comment"></textarea> <br />
+          <input type="hidden" name="applicant" value="Kjetil Kværnum" />
+          <button type="submit">Send inn!</button>
+        </fieldset>
+      </form>
+    </section>
+  </body>
+</html>
