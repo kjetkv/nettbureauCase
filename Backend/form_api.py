@@ -49,6 +49,7 @@ class FormChecker(Resource):
         if re.search(regex, phone) is None:
             errors.append("phone number")
         else:
+            # Only include last 8 digits of phone number to ensure a unified format in the db. 
             phone = phone[-8:]
         # Validate areacode by matching it to a regular expression:
         regex = "^[0-9]{4}$"

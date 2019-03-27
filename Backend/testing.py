@@ -19,7 +19,7 @@ def test_post(name, email, phone, areacode, comment):
 # Resets the contents of the databases, and runs some tests.
 reset_users()
 reset_attempts()
-print(test_post("Kjetil Kværnum", "kjetil.kvrnum@gmail.com", "12345678", 7031, "Comment about me."))
+print(test_post("Kjetil Kværnum", "kjkv@gmail.com", "12345678", 7031, "Comment about me."))
 print(test_post("Ole-Gunnar Hansen", "ole-g@stud.ntnu.com", "+4712675678", 1476, "Comment about me."))
 print(test_post("Ole-Gunnar Hansen 2", "asd", "123456789", 14276, "Comment about me."))
 print(test_post("Ole", "ole@email.com", "28473653", 1476, "Comment about me.); DROP TABLE users;--"))
