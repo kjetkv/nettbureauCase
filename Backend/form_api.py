@@ -9,7 +9,7 @@ import requests
 app = Flask(__name__)
 CORS(app)
 api = Api(app)
-init_users()
+init_users(True)
 init_attempts(True)
 
 
@@ -17,7 +17,7 @@ class FormChecker(Resource):
 
     def post(self):
         if get_attempts(request.remote_addr) > 5:
-            abort(403, message="Too many submissions in the last 20 minutes.")
+            return {'valid':False, 'error':"Too many submissions in the last 20 minutes."}, 403
         errors = []  # Placeholder array for error messages.
         error_message = ""
         name = request.form['name'].lower()
@@ -73,6 +73,7 @@ class FormChecker(Resource):
                 connection.rollback()
                 error_message = "email or phone number already exists"
         if error_message:
+            print(error_message)
             return {'valid': False, 'error': error_message}, 400
         else:
             return {'valid': True}
