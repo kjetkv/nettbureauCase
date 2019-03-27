@@ -1,5 +1,9 @@
 import React, { Component } from "react";
 
+// This class contains the same form as provided in the case description.
+// The value of the fields are passed as props to the main App (App.js), and
+// they all share a common onChange-function for handling user input.
+// The onSubmit function is also passed as a prop.
 class Form extends Component {
   render() {
     return (
@@ -58,7 +62,7 @@ class Form extends Component {
               />
               <br />
               <input type="hidden" name="applicant" value="Kjetil Kværnum" />
-              <button class="btn btn-primary" type="submit">
+              <button class="btn btn-dark" type="submit">
                 Send inn!
               </button>
             </fieldset>
