@@ -71,7 +71,7 @@ class FormChecker(Resource):
                                    (request.form['name'], email, phone, areacode, comment))
             except:
                 connection.rollback()
-                error_message = "email or phone number already exists"
+                error_message = "Email or phone number already exists."
         if error_message:
             print(error_message)
             return {'valid': False, 'error': error_message}, 400

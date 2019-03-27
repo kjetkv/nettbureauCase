@@ -16,12 +16,36 @@ class App extends Component {
   }
 
   validateInputs = () => {
+    let errorMessage = "";
+    let errors = [];
+    if (!/^[a-zæøå -]{2,}$/.test(this.state.name.toLowerCase())) {
+      errors.push("navn");
+    }
+    if (
+      !/^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$/.test(
+        this.state.email.toLowerCase()
+      )
+    ) {
+      errors.push("email-adresse");
+    }
+    if (!/^((\+47)?|(0047)?|(47)?)[0-9]{8}$/.test(this.state.phone)) {
+      errors.push("telefonnummer");
+    }
+    if (!/^[0-9]{4}$/.test(this.state.areacode)) {
+      errors.push("postnummer");
+    }
+    if (errors.length) {
+      errorMessage = "Ugyldig " + errors.join(", ") + ".";
+      this.setState({ errorMessage: errorMessage });
+      return false;
+    }
     return true;
   };
 
   submitForm = e => {
+    e.preventDefault();
     if (!this.validateInputs()) {
-      this.setState({ errorMessage: "Inputs Are wrong!" });
+      return;
     }
     let formData = new FormData(e.target);
     fetch("http://localhost:5000/", {
