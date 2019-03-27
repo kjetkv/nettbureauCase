@@ -17,7 +17,7 @@ class FormChecker(Resource):
 
     def post(self):
         if get_attempts(request.remote_addr) > 5:
-            return {'valid':False, 'message': "Too many submissions in the last 20 minutes."}, 403
+            return {'valid':False, 'message': "Too many submissions, try again in 20 minutes."}, 403
         errors = []  # Placeholder array for error messages.
         error_message = ""
         name = request.form['name'].lower()
@@ -53,7 +53,7 @@ class FormChecker(Resource):
                 errors.append("area code")
 
         '''
-        Since the comment box is not validated using a regular expression preventing the user from inputting 
+        Since the comment box is not validated using a regular expression preventing the user from inputting
         executable code, it is very important that any SQL statements are written on a format that prevents injections.
         Example (for sqlite3, other db modules might use other placeholder symbols):
         cursor.execute("INSERT INTO users VALUES (?, ?, ?, ?, ?)", (name, email, phone, areacode, comment))

@@ -4,14 +4,15 @@ class Form extends Component {
   render() {
     return (
       <div className="formMain">
-        <div className="header">
-          <form onSubmit={this.props.submitForm} ref="form">
+        <form onSubmit={this.props.submitForm} ref="form">
+          <div class="form-group">
             <fieldset>
               <legend>Informasjon</legend>
               <label>Navn:</label>
               <input
                 type="text"
                 name="name"
+                class="form-control"
                 value={this.props.name}
                 onChange={this.props.handleChange}
                 placeholder="Ola Nordmann"
@@ -21,6 +22,7 @@ class Form extends Component {
               <input
                 type="email"
                 name="email"
+                class="form-control"
                 value={this.props.email}
                 onChange={this.props.handleChange}
                 placeholder="navn@domene.no"
@@ -30,6 +32,7 @@ class Form extends Component {
               <input
                 type="tel"
                 name="phone"
+                class="form-control"
                 value={this.props.phone}
                 onChange={this.props.handleChange}
                 placeholder="XXX XX XXX"
@@ -39,6 +42,7 @@ class Form extends Component {
               <input
                 type="number"
                 name="areacode"
+                class="form-control"
                 value={this.props.areacode}
                 onChange={this.props.handleChange}
                 max="9999"
@@ -48,15 +52,18 @@ class Form extends Component {
               <label>Kommentar:</label>
               <textarea
                 name="comment"
+                class="form-control"
                 value={this.props.comment}
                 onChange={this.props.handleChange}
               />
               <br />
               <input type="hidden" name="applicant" value="Kjetil Kværnum" />
-              <button type="submit">Send inn!</button>
+              <button class="btn btn-primary" type="submit">
+                Send inn!
+              </button>
             </fieldset>
-          </form>
-        </div>
+          </div>
+        </form>
       </div>
     );
   }

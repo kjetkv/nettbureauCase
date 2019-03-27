@@ -1,23 +1,18 @@
 .App {
   text-align: center;
-  padding: 25px;
+  padding: 5px;
 }
 
 .formMain {
-  padding: 25px 0px 5px;
+  padding: 10px 0px 5px;
   margin: auto;
   width: 90%;
-  max-width: 540px;
+  max-width: 250px;
 }
 
-.formButton {
+.btn {
   text-align: center;
-  width: 85px;
-}
-
-.formPrepend {
-  text-align: center;
-  width: 100px;
+  width: 150px;
 }
 
 .errorText {

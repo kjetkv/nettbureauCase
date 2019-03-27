@@ -69,7 +69,6 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <h1 className="display-4">Nettbureau Submission Form</h1>
         <Form
           submitForm={this.submitForm}
           name={this.state.name}

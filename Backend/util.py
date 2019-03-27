@@ -85,6 +85,7 @@ def clear_attempts(ip):
 
 
 def update_attempts(ip, num_attempts):
+    now = dt.datetime.now()
     conn = sqlite3.connect('database.db')
-    conn.cursor().execute("UPDATE attempts SET numAttempts=? WHERE ip=?", (num_attempts, ip))
+    conn.cursor().execute("UPDATE attempts SET numAttempts=?, lastAttempt=? WHERE ip=?", (num_attempts, now, ip))
     conn.commit()
