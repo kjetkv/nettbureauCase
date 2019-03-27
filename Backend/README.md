@@ -17,9 +17,16 @@ The API is currently configured to respond with the contents of the database whe
 ## File Descriptions
 
 ### form_api.py
+Main backend app. Binds to localhost on port 5000 and handles POST- and GET-requests to this adress. Functionality includes:
+* Validation of the form fields and protection against injections.
+* Storing the submissions in a database table.
+* Spam submission prevention measures.
 
 ### utils.py
+Provides some utility functions used in *form_api.py* and *testing.py*, including:
+* Initialization of the tables in the DB.
+* Wiping the contents of the tables.
+* Function for retrieving the amount of submissions for a given ip in the last 20 minutes, and updating the *attempts* table.
 
 ### testing.py
-
-## Screenshots
+A few simple test requests sent to the API to test some of the validations and sql-injection prevention.
