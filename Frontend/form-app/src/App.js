@@ -11,7 +11,7 @@ class App extends Component {
       phone: "",
       areacode: "",
       comment: "",
-      errorMessage: ""
+      message: ""
     };
   }
 
@@ -36,7 +36,7 @@ class App extends Component {
     }
     if (errors.length) {
       errorMessage = "Ugyldig " + errors.join(", ") + ".";
-      this.setState({ errorMessage: errorMessage });
+      this.setState({ message: errorMessage });
       return false;
     }
     return true;
@@ -54,7 +54,7 @@ class App extends Component {
     })
       .then(resp => resp.json())
       .then(json => {
-        this.setState({ errorMessage: json["error"] });
+        this.setState({ message: json["message"] });
       })
       .catch(error => {
         console.log(error);
@@ -79,7 +79,7 @@ class App extends Component {
           comment={this.state.comment}
           handleChange={this.handleChange}
         />
-        {this.state.errorMessage}
+        {this.state.message}
       </div>
     );
   }

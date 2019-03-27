@@ -17,7 +17,7 @@ class FormChecker(Resource):
 
     def post(self):
         if get_attempts(request.remote_addr) > 5:
-            return {'valid':False, 'error':"Too many submissions in the last 20 minutes."}, 403
+            return {'valid':False, 'message': "Too many submissions in the last 20 minutes."}, 403
         errors = []  # Placeholder array for error messages.
         error_message = ""
         name = request.form['name'].lower()
@@ -74,9 +74,9 @@ class FormChecker(Resource):
                 error_message = "Email or phone number already exists."
         if error_message:
             print(error_message)
-            return {'valid': False, 'error': error_message}, 400
+            return {'valid': False, 'message': error_message}, 400
         else:
-            return {'valid': True}
+            return {'valid': True, 'message': "Thank you for your submission."}
 
     def get(self):
         con = sqlite3.connect("database.db")
